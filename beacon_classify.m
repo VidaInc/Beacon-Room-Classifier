@@ -1,34 +1,15 @@
-%% Initialization
+% Initialization
 clear ; close all; clc
 
-%% Load Data
+% Load Data
 load('data');
 X = data(:, 1:10); y = data(:, 11);
 %X = horzcat(ones(size(X, 1), 1), data(:,1:10));
-
-%% =========== Part 1: Regularized Logistic Regression ============
 
 % Add Polynomial Features
 % Note that mapFeature also adds a column of ones for us, so the intercept
 % term is handled
 X = horzcat(mapFeature(data(:, 1), data(:, 2), data(:, 3)), data(: , 4:10));
-
-% Initialize fitting parameters
-initial_theta = zeros(size(X, 2), 1);
-
-% Set regularization parameter lambda to 1
-lambda = 1;
-
-% Compute and display initial cost and gradient for regularized logistic
-% regression
-[cost, grad] = costFunctionReg(initial_theta, X, y, lambda);
-
-fprintf('Cost at initial theta (zeros): %f\n', cost);
-
-fprintf('\nProgram paused. Press enter to continue.\n');
-pause;
-
-%% ============= Part 2: Regularization and Accuracies =============
 
 % Initialize fitting parameters
 initial_theta = zeros(size(X, 2), 1);
