@@ -1,8 +1,5 @@
-% Initialization
-clear ; close all; clc
+function theta = trainClassifier(data)
 
-% Load Data
-load('data');
 y = data(:, 13);
 
 % Add Polynomial Features
@@ -22,9 +19,5 @@ options = optimset('GradObj', 'on', 'MaxIter', 3000);
 [theta, ~, ~] = ...
 	fminunc(@(t)(costFunctionReg(t, X, y, lambda)), initial_theta, options);
 
-% Compute accuracy on our training set
-p = predict(theta, X);
-
-fprintf('Train Accuracy: %f\n', mean(double(p == y)) * 100);
-
+end
 

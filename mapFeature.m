@@ -1,4 +1,4 @@
-function out = mapFeature(X1, X2, X3)
+function out = mapFeature(X1, X2, X3, degree)
 % MAPFEATURE Feature mapping function to polynomial features
 %
 %   MAPFEATURE(X1, X2, X3) maps three input features
@@ -8,8 +8,7 @@ function out = mapFeature(X1, X2, X3)
 %
 %   Inputs X1, X2 X3 must be the same size
 
-degree = 6;
-out = ones(size(X1(:,1)));
+out = [];
 for i = 1:degree
     for j = 0:i
         for k = 0:j 
