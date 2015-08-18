@@ -1,15 +1,17 @@
-function p = predict(theta, X)
-%PREDICT Predict whether the label is 0 or 1 using learned logistic 
-%regression parameters theta
-%   p = PREDICT(theta, X) computes the predictions for X using a 
-%   threshold at 0.5 (i.e., if sigmoid(theta'*x) >= 0.5, predict 1)
+function p = predict(Theta1, Theta2, X)
+%PREDICT Predict the label of an input given a trained neural network
+%   p = PREDICT(Theta1, Theta2, X) outputs the predicted label of X given the
+%   trained weights of a neural network (Theta1, Theta2)
 
-m = size(X, 1); % Number of training examples
+% Useful values
+m = size(X, 1);
 
-% You need to return the following variables correctly
-p = zeros(m, 1);
+a1 = [ones(m, 1) X];
+a2 = sigmoid(Theta1*a1');
+a2 = [ones(1, size(a2, 2)) ; a2];
+hyp = sigmoid(a2'*Theta2');
+[~,p] = max(hyp, [], 2);
 
-p(sigmoid(X * theta) >= 0.5) = 1;
 % =========================================================================
 
 
