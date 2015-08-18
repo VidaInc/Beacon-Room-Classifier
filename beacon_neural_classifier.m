@@ -1,6 +1,6 @@
 clear ; close all; clc
 
-hidden_layer_size = 500;
+hidden_layer_size = 200;
 num_labels = 4;         
 
 % Load Data
